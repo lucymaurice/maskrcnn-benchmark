@@ -31,11 +31,9 @@ RUN git clone https://github.com/lucymaurice/maskrcnn-benchmark.git \
 
 WORKDIR /maskrcnn-benchmark
 
+# Set up Jupyter
 RUN pip3 install jupyter
-
 RUN jupyter notebook --generate-config
-
 COPY "jupyter_notebook_config.py" ${CONFIG_PATH}
-
 ENTRYPOINT ["sh", "-c", "jupyter notebook --allow-root -y --no-browser --ip=0.0.0.0 --config=${CONFIG_PATH}"]
 
